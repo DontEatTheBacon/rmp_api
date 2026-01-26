@@ -1,14 +1,14 @@
 from typing import List, Optional
 
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.ui import WebDriverWait
 
-from .models import Professor
 from .exceptions import MissingElement
+from .models import Professor
 
 class RMPApi:
     _chrome_options = Options()
