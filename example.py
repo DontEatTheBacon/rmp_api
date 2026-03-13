@@ -18,6 +18,9 @@ with RMPApi(school_code=2774) as api:
     # Fetch multiple professors by name
     profs = api.query_profs('Van Ma', limit=5)
 
+    # Sort professors by rating (descending)
+    sort(profs, reverse=True)
+
     # Safely print professor attributes
     if prof:
         print(f'{prof.name} is rated: {prof.rating}, '
