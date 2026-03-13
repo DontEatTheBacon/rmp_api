@@ -24,6 +24,12 @@ class Professor:
     
     def __str__(self):
         return f'{self.name} | Rating: {self.rating} | Difficulty: {self.difficulty} | Take again: {self.percent_take_again}%'
+
+    def __lt__(self, other: Professor) -> bool:
+        if not isinstance(other, Professor):
+            raise NotImplemented
+        return self.rating < other.rating
+        
     
     def to_dict(self) -> dict:
         return {
