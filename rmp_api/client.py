@@ -130,7 +130,7 @@ class RMPApi:
 
         return prof_codes 
 
-    def query_profs(self, text_query: str, limit: int=5) -> List[Optional[Professor]]:
+    def query_profs(self, text_query: str, limit: int=5) -> List[Professor]:
         prof_codes = self.query_prof_codes(text_query, limit)
         profs = [prof for prof in [self.get_prof(prof_code) for prof_code in prof_codes] if prof]
         return profs
