@@ -15,7 +15,7 @@ class Professor:
             self.difficulty = None
 
         try:
-            self.percent_take_again: Optional[int] = int(percent_take_again.replace('%', ''))
+            self.percent_take_again: Optional[int] = int(percent_take_again.replace('%', '')) if isinstance(percent_take_again, str) else int(percent_take_again)
         except ValueError:
             self.percent_take_again = None
 
