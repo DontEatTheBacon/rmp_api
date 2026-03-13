@@ -2,13 +2,24 @@
 
 An unofficial Python API for scraping professor information from **RateMyProfessors** using Selenium. Retrieve ratings, difficulty, and % of students who would take the professor again.
 
-## Installation
+## Quick Install
+
+Install directly from GitHub:
+
 ```bash
-pip install selenium
+pip install git+https://github.com/DontEatTheBacon/rmp_api.git
 ```
-Requirements: Python 3.9+, Google Chrome, compatible ChromeDriver.
+
+Or clone and install manually:
+
+```bash
+git clone https://github.com/DontEatTheBacon/rmp_api.git
+cd rmp_api
+pip install -e .
+```
 
 ## Usage
+
 ```python
 from rmp_api import RMPApi
 
@@ -21,18 +32,42 @@ with RMPApi(SCHOOL_CODE) as api:
 ```
 
 ## API Reference
-**RMPApi(school_code: int)** – Create API instance; supports `with` for browser cleanup  
-**get_prof(professor_code: int) -> Optional[Professor]** – Fetch professor by ID  
-**query_prof(text_query: str) -> Optional[Professor]** – Search by name, returns first match  
-**query_prof_codes(text_query: str, limit: int = 5) -> List[int]** – Return professor IDs  
-**query_profs(text_query: str, limit: int = 5) -> List[Professor]** – Return multiple professor profiles  
 
-**Professor model:** `name`, `rating`, `difficulty`, `percent_take_again`  
+```python
+# Create API instance for a specific school (supports 'with' for browser cleanup)
+RMPApi(school_code: int)
 
-Error handling: Missing elements, timeouts, or invalid IDs return `None` or empty lists.
+# Fetch a professor by ID
+get_prof(professor_code: int) -> Optional[Professor]
+
+# Search for a professor by name, returns first match
+query_prof(text_query: str) -> Optional[Professor]
+
+# Return a list of professor IDs matching the query
+query_prof_codes(text_query: str, limit: int = 5) -> List[int]
+
+# Return multiple professor profiles matching the query
+query_profs(text_query: str, limit: int = 5) -> List[Professor]
+```
+
+## Professor Model
+
+```python
+# Professor object attributes
+name
+rating
+difficulty
+percent_take_again
+```
+
+## Error Handling
+
+Missing elements, timeouts, or invalid IDs return `None` or empty lists.
 
 ## License
-MIT License  
+
+MIT License
 
 ## Author
+
 Andrew Valentine
